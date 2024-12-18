@@ -119,7 +119,7 @@ const productListComponents = (cart) => {
             <td class="font-fontName font-normal text-[14px] text-darkColor text-center">${item.color}</td>
             <td class="font-fontName font-bold text-[14px] text-darkColor text-center">${item.size}</td>
             <td class="font-fontName font-bold text-[14px] text-darkColor text-center">${item.quentity}</td>
-            <td class="font-fontName font-bold text-[14px] text-darkColor text-center md:text-right">${item.price}</td>
+            <td class="font-fontName font-bold text-[14px] text-darkColor text-center md:text-right">$ ${item.price}</td>
         </tr>`
     )
 }
