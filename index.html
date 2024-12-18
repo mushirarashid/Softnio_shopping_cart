@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,100..900;1,100..900&family=Baskervville+SC&family=Edu+AU+VIC+WA+NT+Arrows:wght@400..700&family=Faustina:ital,wght@0,300..800;1,300..800&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Source+Serif+4:ital,opsz,wght@0,8..60,200..900;1,8..60,200..900&display=swap');
+    </style>
+
+
+    <script
+        src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp,container-queries"></script>
+
+    <!-- font -->
+    <link rel="stylesheet" href="css/all.min.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                fontFamily: {
+                    fontName: "Roboto"
+                },
+                extend: {
+                    colors: {
+                        darkColor: "#364A63",
+                        lightColor: "#8091A7",
+                        borderColor: "#DBDFEA"
+                    }
+                }
+            }
+        }
+    </script>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        /* width */
+        ::-webkit-scrollbar {
+            width: 0;
+        }
+
+        body {
+            box-sizing: border-box;
+        }
+
+        /* Track */
+        /* ::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px grey; 
+  border-radius: 10px;
+} */
+
+        /* Handle */
+        /* ::-webkit-scrollbar-thumb {
+  background: red; 
+  border-radius: 10px;
+} */
+
+        /* Handle on hover */
+        /* ::-webkit-scrollbar-thumb:hover {
+  background: #b30000; 
+} */
+
+
+        /* Chrome, Safari, Edge, Opera */
+        input::-webkit-outer-spin-button,
+        input::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+
+        /* Firefox */
+        input[type=number] {
+            -moz-appearance: textfield;
+        }
+    </style>
+
+</head>
+
+<body class="bg-blue-200">
+
+    <div
+        class="px-4 w-auto md:w-[1320px] mx-auto grid md:grid md:grid-cols-2 md:gap-[60px] pt-20 md:pt-[120px] pb-32 md:pb-[264px] bg-white relative">
+
+
+        <div id="cartInfo" class="w-full h-full absolute left-0 top-0 hidden">
+
+            <div onclick="removeCartModal()" class="w-full h-full bg-[#11121B] opacity-55"></div>
+
+
+            <div
+                class="cart_box p-8 md:p-11 w-[95%]
+             md:w-[651px] h-[480px] bg-white opacity-100 rounded-[20px] absolute left-2/4 -translate-x-1/2 top-2/4 -translate-y-1/2">
+
+                <p class="font-fontName text-[22px] text-darkColor mb-4 font-bold">Your Cart</p>
+
+                <div class="table_box h-[245px] w-auto md:w-[563px] overflow-y-scroll ">
+
+                    <table cellspacing="0" cellpadding="0" border="0" class="w-full md:w-[563px]">
+                        <thead>
+                            <tr class="h-9 sticky left-0 top-0 z-10 border-solid border-b border-borderColor bg-white">
+                                <th class="font-fontName font-normal text-[14px] text-lightColor text-left w-[278px]">
+                                    Item</th>
+                                <th class="font-fontName font-normal text-[14px] text-lightColor text-center w-[62px]">
+                                    Color</th>
+                                <th class="font-fontName font-normal text-[14px] text-lightColor text-center w-[69px]">
+                                    Size </th>
+                                <th class="font-fontName font-normal text-[14px] text-lightColor text-center w-[59px]">
+                                    Qnt</th>
+                                <th
+                                    class="font-fontName font-normal text-[14px] text-lightColor text-center md:text-right	w-[91px]">
+                                    Price</th>
+                            </tr>
+                        </thead>
+
+                        <tbody id="cart-product-list"></tbody>
+                    </table>
+
+
+
+                </div>
+
+                <div class="flex mb-4">
+                    <p class="font-fontName text-[16px] text-darkColor mt-7 font-bold w-[379px]">Total</p>
+
+                    <p id="total-products-quantity"
+                        class="font-fontName text-[16px] text-darkColor mt-7 font-bold w-[379px] text-right pr-14">0</p>
+
+
+
+                    <p class="font-fontName text-[16px] text-darkColor mt-7 font-bold w-[80px]">$ <span
+                            id="total-products-price"></span></p>
+
+
+                </div>
+
+                <div class="flex gap-6 justify-end">
+                    <button onclick="removeCartModal()"
+                        class="font-fontName text-[13px] md:text-base text-darkColor font-bold w-[130px] md:w-[152px] h-9 border-solid border-borderColor border rounded-[3px] flex justify-center items-center ">Continue
+                        Shopping</button>
+
+
+                    <button
+                        class="font-fontName text-[13px] md:text-base text-white font-bold w-[80px] md:w-[94px] h-9 bg-[#6576FF] rounded-[3px] flex justify-center items-center">Checkout</button>
+                </div>
+
+
+            </div>
+
+        </div>
+
+
+        <!-- Left side image showcase -->
+        <div class="w-auto md:w-[630px]">
+            <img id="product-image" src="image/product_1.png" alt="">
+        </div>
+
+        <!-- Right side description -->
+        <div>
+            <div class="text">
+                <h1 class="font-fontName text-[33px] md:text-[40px] text-darkColor mt-3 md:mt-[90px] font-bold ">Classy
+                    Modern Smart watch</h1>
+            </div>
+            <div class="review flex gap-2 mb-3 md:mb-5 items-center">
+                <div class="icon">
+                    <i class="fa-solid fa-star text-[#FFD200]"></i>
+                    <i class="fa-solid fa-star text-[#FFD200]"></i>
+                    <i class="fa-solid fa-star text-[#FFD200]"></i>
+                    <i class="fa-solid fa-star-half-stroke text-[#FFD200]"></i>
+                    <i class="fa-solid fa-star-half-stroke text-[#FFD200]"></i>
+
+                </div>
+                <p class="font-fontName font-normal text-[14px] text-lightColor">(2 Reviews)</p>
+            </div>
+
+            <div class="price flex gap-[5px] mb-3 md:mb-5">
+                <p class="font-fontName font-normal text-lg md:text-xl text-lightColor line-through">$99.00</p>
+                <p class="font-fontName font-bold text-xl md:text-2xl text-[#6576FF]">$79.00</p>
+            </div>
+
+            <p class="font-fontName font-normal text-[16px] md:text-[18px] text-lightColor w-auto md:w-[626px] mb-5">I
+                must explain to you how all
+                this mistaken idea of denoun cing ple praising pain was born and I will give you a complete account of
+                the system, and expound the actual teaching.</p>
+
+            <div class="type flex gap-[56px] mb-2">
+                <p class="font-fontName font-normal text-[14px] text-lightColor">Type</p>
+                <p class="font-fontName font-normal text-[14px] text-lightColor">Model Number</p>
+            </div>
+
+            <div class="watch flex gap-[43px]">
+                <p class="font-fontName font-bold text-base text-darkColor">Watch</p>
+                <p class="font-fontName font-bold text-base text-darkColor">Forerunner 290XT</p>
+            </div>
+
+            <p class="font-fontName font-bold text-base text-darkColor mt-5 mb-[10px]">Band Color</p>
+
+            <div class="all_colour flex gap-[23px] mb-5">
+                <div onclick="onColorChangeHandle(this, 'purple')"
+                    class="color-verient-button h-4 w-4 rounded-full bg-[#816BFF]  ring-offset-[3px] ring-[#816BFF] ring-1">
+                </div>
+                <div onclick="onColorChangeHandle(this,'black')"
+                    class="color-verient-button h-4 w-4 rounded-full bg-[#1FCEC9] ring-offset-[3px] ring-[#1FCEC9]">
+                </div>
+                <div onclick="onColorChangeHandle(this,'blue')"
+                    class="color-verient-button h-4 w-4 rounded-full bg-[#4B97D3] ring-offset-[3px] ring-[#4B97D3]">
+                </div>
+                <div onclick="onColorChangeHandle(this,'cyen')"
+                    class="color-verient-button h-4 w-4 rounded-full bg-[#3B4747] ring-offset-[3px] ring-[#3B4747]">
+                </div>
+            </div>
+
+
+            <p class="font-fontName font-bold text-base text-darkColor mb-[10px]">Wrist Size</p>
+
+            <div class="all_size flex gap-3">
+                <div onclick="sizeChange(this, 'S')"
+                    class="size w-14 md:w-[77px] border-2 border-borderColor !border-[#6576FF] border-solid rounded-[3px] flex gap-1 md:gap-2 justify-center items-center cursor-pointer">
+                    <p class="font-fontName font-bold text-xl md:text-[26px] text-darkColor !text-[#6576FF]">S</p>
+                    <p class="font-fontName font-normal text-[13px] md:text-[15px] text-lightColor">$69</p>
+                </div>
+                <div onclick="sizeChange(this, 'M')"
+                    class="size w-14 md:w-[77px] border-2 border-solid rounded-[3px] flex gap-1 md:gap-2 justify-center items-center cursor-pointer">
+                    <p class="font-fontName font-bold text-xl md:text-[26px] text-darkColor">M</p>
+                    <p class="font-fontName font-normal text-[13px] md:text-[15px] text-lightColor">$79</p>
+                </div>
+                <div onclick="sizeChange(this, 'L')"
+                    class="size w-14 md:w-[77px] border-2 border-solid rounded-[3px] flex gap-1 md:gap-2 justify-center items-center cursor-pointer">
+                    <p class="font-fontName font-bold text-xl md:text-[26px] text-darkColor">L</p>
+                    <p class="font-fontName font-normal text-[13px] md:text-[15px] text-lightColor">$89</p>
+                </div>
+                <div onclick="sizeChange(this, 'XL')"
+                    class="size w-16 md:w-[77px] border-2 border-solid rounded-[3px] flex gap-1 md:gap-2 justify-center items-center cursor-pointer">
+                    <p class="font-fontName font-bold text-xl md:text-[26px] text-darkColor">XL</p>
+                    <p class="font-fontName font-normal text-[13px] md:text-[15px] text-lightColor">$99</p>
+                </div>
+            </div>
+
+            <div class="cart_bar flex gap-3 mt-5  items-center">
+                <div class="flex items-center border-solid border border-borderColor rounded-[4px] ">
+                    <p onclick="decrement()"
+                        class="border-r-[1px] border-solid border-borderColor w-[35px] flex justify-center items-center font-fontName font-normal text-[19px] text-lightColor cursor-pointer">
+                        -</p>
+                    <input value="1" type="number" id="quantity"
+                        class="font-fontName w-[50px] font-normal text-[14px] text-darkColor text-center focus:outline-none focus:ring-0 border-0 p-0" />
+                    <p onclick="increment()"
+                        class="border-l-[1px] border-solid border-borderColor w-[35px] flex justify-center items-center font-fontName font-normal text-[19px] text-lightColor cursor-pointer">
+                        +</p>
+                </div>
+
+                <div onclick="addToCart()"
+                    class="w-[105px] h-9 bg-[#6576FF] rounded-[3px] text-white font-fontName font-bold text-[13px] flex justify-center items-center cursor-pointer">
+                    Add to Cart</div>
+
+                <div class="icon">
+                    <i class="fa-regular fa-heart text-[#6576FF] text-[19px]"></i>
+                </div>
+            </div>
+        </div>
+
+        <!-- checkout button -->
+        <button onclick="showCartModal()"
+            class="btn w-[139px] h-[42px] bg-[#FFBB5A] rounded-[20px] flex justify-center items-center gap-[10px] absolute left-2/4 -translate-x-1/2 bottom-10 md:bottom-5 shadow-[0px_0px_15px_5px_rgba(0, 0, 0, 0.1)]">
+            <p class="font-fontName font-bold text-[14px] text-darkColor">Checkout</p>
+            <p id="product-list-count"
+                class="w-[19px] h-5 bg-white rounded-[5px] flex justify-center items-center font-fontName font-boldtext-[12px] text-darkColor ">
+                0</p>
+        </button>
+
+
+    </div>
+
+
+
+    <script src="js/all.min.js"></script>
+    <script src="js/script.js"></script>
+</body>
+
+</html>
+
